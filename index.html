@@ -2,141 +2,557 @@
 
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Posturio - Smart Desk Wellness Companion</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Posturio — Smart Desk Wellness for macOS</title>
+  <meta name="description" content=" Posturio is a smart desk wellness companion for macOS with active-time reminders, posture breaks, eye breaks, hydration reminders, and guided exercises." />
 
-<style>
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #f7f8fa;
-    color: #1d1d1f;
-}
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #15171a;
+      --muted: #6b7280;
+      --blue: #0a84ff;
+      --green: #35c759;
+      --border: rgba(0,0,0,0.08);
+      --shadow: 0 24px 60px rgba(20, 30, 50, 0.10);
+      --radius: 24px;
+    }
 
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.hero h1 {
-    font-size: 56px;
-    margin-bottom: 20px;
-}
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(10,132,255,0.15), transparent 35%),
+        radial-gradient(circle at top right, rgba(53,199,89,0.16), transparent 30%),
+        var(--bg);
+      color: var(--text);
+    }
 
-.hero p {
-    max-width: 700px;
-    margin: auto;
-    font-size: 20px;
-    line-height: 1.6;
-    color: #666;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.button {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 14px 28px;
-    border-radius: 12px;
-    background: #0071e3;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
 
-.section {
-    max-width: 1000px;
-    margin: auto;
-    padding: 80px 20px;
-}
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0;
+    }
 
-.features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap: 20px;
-}
+    .logo {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
 
-.card {
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-}
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      align-items: center;
+    }
 
-.footer {
-    text-align: center;
-    padding: 40px;
-    color: #888;
-}
-</style>
+    .nav-button {
+      background: #111;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 80px 0 70px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(20px);
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 86px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin: 0 auto 24px;
+      max-width: 900px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 21px;
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .primary-button {
+      background: var(--blue);
+      color: white;
+      padding: 15px 24px;
+      border-radius: 14px;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(10,132,255,0.28);
+    }
+
+    .secondary-button {
+      background: white;
+      color: #111;
+      padding: 15px 24px;
+      border-radius: 14px;
+      font-weight: 800;
+      border: 1px solid var(--border);
+    }
+
+    .hero-card {
+      margin: 70px auto 0;
+      max-width: 880px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 20px;
+      backdrop-filter: blur(24px);
+    }
+
+    .mock-window {
+      background: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .window-top {
+      height: 42px;
+      background: #f2f3f5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 16px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #d1d5db;
+    }
+
+    .mock-content {
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .mock-panel {
+      background: #f7f8fa;
+      border-radius: 22px;
+      padding: 28px;
+      text-align: left;
+    }
+
+    .mock-panel h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      letter-spacing: -0.04em;
+    }
+
+    .mock-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .timer {
+      font-size: 58px;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      margin-top: 22px;
+    }
+
+    .exercise-card {
+      background: linear-gradient(135deg, #eaf5ff, #f5fff7);
+      border-radius: 24px;
+      padding: 30px;
+      text-align: center;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .exercise-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 48px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(34px, 5vw, 56px);
+      letter-spacing: -0.06em;
+      margin: 0 0 16px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+
+    .feature span {
+      font-size: 30px;
+    }
+
+    .feature h3 {
+      margin: 18px 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .wellness {
+      background: #111;
+      color: white;
+      border-radius: 34px;
+      padding: 54px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .wellness h2 {
+      font-size: clamp(34px, 5vw, 56px);
+      letter-spacing: -0.06em;
+      margin: 0 0 16px;
+    }
+
+    .wellness p {
+      color: rgba(255,255,255,0.72);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .check {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+    }
+
+    .check::before {
+      content: "✓";
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .price-card {
+      background: white;
+      color: #111;
+      border-radius: 26px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .price {
+      font-size: 46px;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      margin: 12px 0 4px;
+    }
+
+    .privacy {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 42px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+
+    .privacy h2 {
+      font-size: 38px;
+      letter-spacing: -0.05em;
+      margin: 0 0 12px;
+    }
+
+    .privacy p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    footer {
+      padding: 50px 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    footer a {
+      margin: 0 10px;
+    }
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mock-content,
+      .wellness {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wellness {
+        padding: 34px;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+    }
+  </style>
 
 </head>
 
 <body>
+  <div class="container">
+    <nav>
+      <div class="logo">Posturio</div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#wellness">Wellness Pack</a>
+        <a href="#privacy">Privacy</a>
+        <a class="nav-button" href="https://apps.apple.com/us/app/posturio/id6775757325?mt=12">Download</a>
+      </div>
+    </nav>
 
-<section class="hero">
-    <h1>Posturio</h1>
+```
+<main>
+  <section class="hero">
+    <div class="badge">✦ Native macOS menu-bar app</div>
 
-<p>
-    Smart desk wellness companion for macOS.
-    Build healthier work habits with active-time posture reminders,
-    eye breaks, hydration reminders, movement breaks,
-    and guided wellness exercises.
-</p>
+    <h1>Smarter wellness breaks for focused Mac users.</h1>
 
-<a class="button" href="#">
-    Download on Mac App Store
-</a>
+    <p>
+      Posturio helps desk workers build healthier work habits with active-time reminders,
+      posture breaks, eye breaks, hydration reminders, movement breaks, and guided exercises.
+    </p>
 
-
-</section>
-
-<section class="section">
-    <h2>Features</h2>
-
-
-<div class="features">
-
-    <div class="card">
-        <h3>Smart Active-Time Reminders</h3>
-        <p>Reminders only count while you're actively using your Mac.</p>
+    <div class="hero-actions">
+      <a class="primary-button" href="https://apps.apple.com/us/app/posturio/id6775757325?mt=12">
+        Download on Mac App Store
+      </a>
+      <a class="secondary-button" href="#wellness">
+        Explore Wellness Pack
+      </a>
     </div>
 
-    <div class="card">
+    <div class="hero-card">
+      <div class="mock-window">
+        <div class="window-top">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+
+        <div class="mock-content">
+          <div class="mock-panel">
+            <h3>Active-time reminders</h3>
+            <p>
+              Posturio only counts time while you're actively using your Mac.
+              Step away, and reminders pause automatically.
+            </p>
+            <div class="timer">24:18</div>
+          </div>
+
+          <div class="exercise-card">
+            <div class="exercise-icon">🧘</div>
+            <h3>Guided desk wellness</h3>
+            <p>Stretch, move, hydrate, and refresh during long work sessions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="section-title">
+      <h2>Built around your real workday.</h2>
+      <p>
+        Unlike simple timers, Posturio adapts to your actual computer usage and helps
+        you take meaningful breaks without unnecessary interruptions.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="feature">
+        <span>⏱️</span>
+        <h3>Active-Time Tracking</h3>
+        <p>Reminders are based on actual Mac activity, not wall-clock time.</p>
+      </div>
+
+      <div class="feature">
+        <span>👀</span>
         <h3>Posture & Eye Breaks</h3>
-        <p>Reduce fatigue and support healthier screen habits.</p>
-    </div>
+        <p>Create independent schedules for posture reminders and eye breaks.</p>
+      </div>
 
-    <div class="card">
+      <div class="feature">
+        <span>💧</span>
         <h3>Hydration Reminders</h3>
-        <p>Build better hydration habits throughout the workday.</p>
-    </div>
+        <p>Build better hydration habits with gentle reminders during your day.</p>
+      </div>
 
-    <div class="card">
+      <div class="feature">
+        <span>🚶</span>
+        <h3>Movement Breaks</h3>
+        <p>Stay active during long sessions with movement-focused reminders.</p>
+      </div>
+
+      <div class="feature">
+        <span>🧘</span>
         <h3>Guided Exercises</h3>
-        <p>Stretch, move, and refresh with illustrated routines.</p>
+        <p>Follow illustrated exercises for eyes, neck, shoulders, wrists, back, hips, legs, and full body.</p>
+      </div>
+
+      <div class="feature">
+        <span>🌙</span>
+        <h3>Quiet Mode</h3>
+        <p>Pause reminders when you need uninterrupted focus.</p>
+      </div>
     </div>
+  </section>
 
-</div>
+  <section id="wellness">
+    <div class="wellness">
+      <div>
+        <h2>Unlock Wellness Pack.</h2>
+        <p>
+          Turn Posturio into a complete desk wellness companion with movement,
+          hydration, stretch reminders, guided eye exercises, and 41 illustrated exercises.
+        </p>
 
+        <div class="check-list">
+          <div class="check">Stretch reminders</div>
+          <div class="check">Movement reminders</div>
+          <div class="check">Hydration reminders</div>
+          <div class="check">Guided eye exercises</div>
+          <div class="check">41 guided exercises for desk workers</div>
+        </div>
+      </div>
 
-</section>
+      <div class="price-card">
+        <div>Wellness Pack</div>
+        <div class="price">$4.99</div>
+        <p>Pay once • Use forever</p>
+        <a class="primary-button" href="https://apps.apple.com/us/app/posturio/id6775757325?mt=12">
+          Get Posturio
+        </a>
+      </div>
+    </div>
+  </section>
 
-<section class="section">
-    <h2>Wellness Pack</h2>
+  <section id="privacy">
+    <div class="privacy">
+      <h2>Privacy first.</h2>
+      <p>
+        Posturio works locally on your Mac. Your activity data stays on your device.
+        No accounts, no data selling, and no unnecessary tracking.
+      </p>
+    </div>
+  </section>
+</main>
 
+<footer>
+  © 2026 Posturio
+  <a href="https://apps.apple.com/us/app/posturio/id6775757325?mt=12">Mac App Store</a>
+  <a href="mailto:support@posturio.app">Support</a>
+</footer>
+```
 
-<p>
-    Unlock movement reminders, stretch reminders,
-    hydration reminders, guided eye exercises,
-    and a growing exercise library designed for desk workers.
-</p>
-
-
-</section>
-
-<div class="footer">
-    © 2026 Posturio
-</div>
-
+  </div>
 </body>
 </html>
