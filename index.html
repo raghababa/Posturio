@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Posturio — Smart Desk Wellness for macOS</title>
   <meta name="description" content="Posturio is a smart desk wellness companion for macOS with active-time reminders, posture breaks, eye breaks, hydration reminders, and guided exercises." />
+  <link rel="icon" type="image/png" href="assets/i256.png" />
 
   <style>
     :root {
@@ -34,10 +35,7 @@
       text-rendering: optimizeLegibility;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .container {
       width: min(1120px, 92%);
@@ -52,9 +50,19 @@
     }
 
     .logo {
-      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
       font-size: 22px;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.10);
     }
 
     .nav-links {
@@ -76,6 +84,14 @@
     .hero {
       padding: 80px 0 70px;
       text-align: center;
+    }
+
+    .hero-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
+      margin-bottom: 28px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
     }
 
     .badge {
@@ -125,6 +141,7 @@
       border-radius: 14px;
       font-weight: 700;
       box-shadow: 0 12px 30px rgba(10,132,255,0.28);
+      display: inline-block;
     }
 
     .secondary-button {
@@ -134,102 +151,28 @@
       border-radius: 14px;
       font-weight: 700;
       border: 1px solid var(--border);
+      display: inline-block;
     }
 
     .hero-card {
       margin: 70px auto 0;
-      max-width: 880px;
+      max-width: 940px;
       background: rgba(255,255,255,0.75);
       border: 1px solid var(--border);
       border-radius: 32px;
       box-shadow: var(--shadow);
-      padding: 20px;
+      padding: 18px;
       backdrop-filter: blur(24px);
     }
 
-    .mock-window {
-      background: #ffffff;
+    .hero-screenshot {
+      width: 100%;
+      display: block;
       border-radius: 24px;
-      overflow: hidden;
       border: 1px solid var(--border);
     }
 
-    .window-top {
-      height: 42px;
-      background: #f2f3f5;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0 16px;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #d1d5db;
-    }
-
-    .mock-content {
-      padding: 34px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .mock-panel {
-      background: #f7f8fa;
-      border-radius: 22px;
-      padding: 28px;
-      text-align: left;
-    }
-
-    .mock-panel h3,
-    .exercise-card h3,
-    .feature h3 {
-      margin: 0 0 10px;
-      font-size: 23px;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-    }
-
-    .mock-panel p,
-    .exercise-card p,
-    .feature p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .timer {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-      font-size: 56px;
-      font-weight: 750;
-      letter-spacing: -0.035em;
-      font-variant-numeric: tabular-nums;
-      margin-top: 22px;
-    }
-
-    .exercise-card {
-      background: linear-gradient(135deg, #eaf5ff, #f5fff7);
-      border-radius: 24px;
-      padding: 30px;
-      text-align: center;
-      min-height: 260px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .exercise-icon {
-      font-size: 64px;
-      margin-bottom: 16px;
-    }
-
-    section {
-      padding: 80px 0;
-    }
+    section { padding: 80px 0; }
 
     .section-title {
       text-align: center;
@@ -272,6 +215,70 @@
       font-size: 30px;
       display: block;
       margin-bottom: 18px;
+    }
+
+    .feature h3,
+    .screenshot-card h3 {
+      margin: 0 0 10px;
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .feature p,
+    .screenshot-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .screenshot-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.06);
+    }
+
+    .screenshot-card img {
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      cursor: zoom-in;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .screenshot-card img:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 60px rgba(0,0,0,0.12);
+    }
+
+    .screenshot-card-content {
+      padding: 18px 4px 4px;
+    }
+
+    .exercise-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .exercise-strip img {
+      width: 100%;
+      background: white;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      padding: 12px;
+      box-shadow: 0 16px 38px rgba(0,0,0,0.06);
+      cursor: zoom-in;
     }
 
     .wellness {
@@ -359,6 +366,25 @@
       margin: 0 auto;
     }
 
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.78);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 88vh;
+      border-radius: 24px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.35);
+      background: white;
+    }
+
     footer {
       padding: 50px 0;
       color: var(--muted);
@@ -366,37 +392,28 @@
       text-align: center;
     }
 
-    footer a {
-      margin: 0 10px;
-    }
+    footer a { margin: 0 10px; }
 
     @media (max-width: 850px) {
       .nav-links { display: none; }
 
-      .mock-content,
+      .grid,
+      .screenshots-grid,
       .wellness {
         grid-template-columns: 1fr;
       }
 
-      .grid {
-        grid-template-columns: 1fr;
+      .exercise-strip {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .wellness {
-        padding: 34px;
-      }
+      .wellness { padding: 34px; }
 
-      .hero {
-        padding-top: 50px;
-      }
+      .hero { padding-top: 50px; }
 
       h1 {
         font-size: clamp(42px, 12vw, 58px);
         letter-spacing: -0.04em;
-      }
-
-      .timer {
-        font-size: 48px;
       }
     }
   </style>
@@ -406,18 +423,25 @@
 <body>
   <div class="container">
     <nav>
-      <div class="logo">Posturio</div>
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#wellness">Wellness Pack</a>
-        <a href="#privacy">Privacy</a>
-        <a class="nav-button" href="https://apps.apple.com/us/app/posturio/id6775757325?mt=12">Download</a>
+      <div class="logo">
+        <img src="assets/i256.png" alt="Posturio logo" class="logo-icon">
+        <span>Posturio</span>
       </div>
-    </nav>
 
+```
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#screenshots">Screenshots</a>
+    <a href="#wellness">Wellness Pack</a>
+    <a href="#privacy">Privacy</a>
+    <a class="nav-button" href="https://apps.apple.com/us/app/posturio/id6775757325?mt=12">Download</a>
+  </div>
+</nav>
 
 <main>
   <section class="hero">
+    <img src="assets/i256.png" alt="Posturio App Icon" class="hero-icon">
+
     <div class="badge">✦ Native macOS menu-bar app</div>
 
     <h1>Smarter wellness breaks for focused Mac users.</h1>
@@ -437,30 +461,7 @@
     </div>
 
     <div class="hero-card">
-      <div class="mock-window">
-        <div class="window-top">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
-
-        <div class="mock-content">
-          <div class="mock-panel">
-            <h3>Active-time reminders</h3>
-            <p>
-              Posturio only counts time while you're actively using your Mac.
-              Step away, and reminders pause automatically.
-            </p>
-            <div class="timer">24:18</div>
-          </div>
-
-          <div class="exercise-card">
-            <div class="exercise-icon">🧘</div>
-            <h3>Guided desk wellness</h3>
-            <p>Stretch, move, hydrate, and refresh during long work sessions.</p>
-          </div>
-        </div>
-      </div>
+      <img src="assets/1.png" alt="Posturio dashboard screenshot" class="hero-screenshot" onclick="openLightbox(this.src)">
     </div>
   </section>
 
@@ -512,6 +513,50 @@
     </div>
   </section>
 
+  <section id="screenshots">
+    <div class="section-title">
+      <h2>See Posturio in action.</h2>
+      <p>
+        A clean macOS experience for reminders, hydration, guided exercises, and daily desk wellness.
+      </p>
+    </div>
+
+    <div class="screenshots-grid">
+      <div class="screenshot-card">
+        <img src="assets/3.png" alt="Posturio dashboard overview" onclick="openLightbox(this.src)">
+        <div class="screenshot-card-content">
+          <h3>Dashboard overview</h3>
+          <p>Track active time, reminder progress, quiet mode, and daily wellness stats.</p>
+        </div>
+      </div>
+
+      <div class="screenshot-card">
+        <img src="assets/4.png" alt="Posturio hydration notification" onclick="openLightbox(this.src)">
+        <div class="screenshot-card-content">
+          <h3>Hydration reminders</h3>
+          <p>Gentle macOS notifications help you stay mindful of hydration during work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="exercise-preview">
+    <div class="section-title">
+      <h2>Guided exercises for desk workers.</h2>
+      <p>
+        Wellness Pack includes illustrated routines for eyes, neck, shoulders, wrists, back, hips, legs, and full-body movement.
+      </p>
+    </div>
+
+    <div class="exercise-strip">
+      <img src="assets/5.png" alt="Posturio guided exercise" onclick="openLightbox(this.src)">
+      <img src="assets/6.png" alt="Posturio guided exercise" onclick="openLightbox(this.src)">
+      <img src="assets/7.png" alt="Posturio guided exercise" onclick="openLightbox(this.src)">
+      <img src="assets/8.png" alt="Posturio guided exercise" onclick="openLightbox(this.src)">
+      <img src="assets/9.png" alt="Posturio guided exercise" onclick="openLightbox(this.src)">
+    </div>
+  </section>
+
   <section id="wellness">
     <div class="wellness">
       <div>
@@ -557,8 +602,24 @@
   <a href="https://apps.apple.com/us/app/posturio/id6775757325?mt=12">Mac App Store</a>
   <a href="mailto:support@posturio.app">Support</a>
 </footer>
-
+```
 
   </div>
+
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Posturio screenshot">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
+
 </body>
 </html>
