@@ -153,7 +153,14 @@ h1 {
   display: inline-block;
 }
 
-.hero-card {
+.hero-image-container { padding: 40px 0; max-width: 1000px; margin: 0 auto; }
+    .hero-image-styled { width: 100%; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.15); display: block; }
+
+
+
+ 
+
+/* .hero-card {
   margin: 70px auto 0;
   max-width: 940px;
   background: rgba(255,255,255,0.75);
@@ -169,7 +176,7 @@ h1 {
   display: block;
   border-radius: 24px;
   border: 1px solid var(--border);
-}
+} */
 
 section { padding: 80px 0; }
 
@@ -457,11 +464,10 @@ footer a { margin: 0 10px; }
       </a>
     </div>
 
+   <div class="hero-image-container">
+          <img src="assets/2.png" alt="Posturio in action" class="hero-image-styled" onclick="openLightbox(this.src)">
+        </div>
 
-    <div class="hero-card">
-      <img src="assets/2.png" alt="Posturio dashboard screenshot" class="hero-screenshot" onclick="openLightbox(this.src)">
-    </div>
-  </section>
 
   <section id="features">
     <div class="section-title">
