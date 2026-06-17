@@ -31,36 +31,23 @@
     }
 
     a { color: inherit; text-decoration: none; }
-
     .container { width: min(1120px, 92%); margin: 0 auto; }
-
     nav { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; }
-
     .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 22px; }
-
     .logo-icon { width: 36px; height: 36px; border-radius: 10px; }
-
     .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: 14px; align-items: center; }
-
     .nav-button { background: #111; color: white; padding: 10px 16px; border-radius: 999px; font-weight: 650; }
 
     .hero { padding: 80px 0 70px; text-align: center; }
-
     .hero-icon { width: 96px; height: 96px; border-radius: 24px; margin-bottom: 28px; }
-
     .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(255,255,255,0.75); border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 14px; margin-bottom: 24px; }
-
     h1 { font-size: clamp(46px, 7vw, 78px); line-height: 1.04; font-weight: 760; margin: 0 auto 24px; max-width: 960px; }
-
     .hero p { max-width: 760px; margin: 0 auto; color: var(--muted); font-size: 21px; line-height: 1.55; }
-
     .hero-actions { margin-top: 36px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
-
     .primary-button { background: var(--blue); color: white; padding: 15px 24px; border-radius: 14px; font-weight: 700; }
-
     .secondary-button { background: white; color: #111; padding: 15px 24px; border-radius: 14px; font-weight: 700; border: 1px solid var(--border); }
 
-    /* استایل جدید برای بهبود نمایش تصویر */
+    /* استایل بهبود یافته برای تصویر هیرو */
     .hero-image-container { padding: 40px 0; max-width: 1000px; margin: 0 auto; }
     .hero-image-styled { width: 100%; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.15); display: block; }
 
@@ -71,16 +58,15 @@
 
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .feature { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
-
     .screenshots-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .screenshot-card { background: white; border: 1px solid var(--border); border-radius: 28px; padding: 18px; }
     .screenshot-card img { width: 100%; border-radius: 20px; cursor: zoom-in; }
-
+    
     .wellness { background: #111; color: white; border-radius: 34px; padding: 54px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
-
     .price-card { background: white; color: #111; border-radius: 26px; padding: 30px; text-align: center; }
     .price { font-size: 46px; font-weight: 760; margin: 12px 0 4px; }
-
+    
+    .privacy { background: white; border: 1px solid var(--border); border-radius: 30px; padding: 42px; text-align: center; }
     .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.78); z-index: 999; align-items: center; justify-content: center; padding: 40px; }
     .lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 24px; background: white; }
 
@@ -118,14 +104,54 @@
           <a class="secondary-button" href="#wellness">Explore Wellness Pack</a>
         </div>
 
-        <!-- تصویر بهینه‌شده با استایل جدید -->
         <div class="hero-image-container">
-          <img src="assets/2.png" alt="Posturio in action" class="hero-image-styled" onclick="openLightbox(this.src)">
+          <img src="assets/hero-image.jpg" alt="Posturio in action" class="hero-image-styled" onclick="openLightbox(this.src)">
         </div>
       </section>
 
-      <!-- مابقی سکشن‌ها (Features, Screenshots, etc.) به همان روال قبلی شما باقی می‌مانند -->
+      <section id="features">
+        <div class="section-title">
+          <h2>Built around your real workday.</h2>
+          <p>Unlike simple timers, Posturio adapts to your actual computer usage and helps you take meaningful breaks.</p>
+        </div>
+        <div class="grid">
+          <div class="feature"><span>⏱️</span><h3>Active-Time Tracking</h3><p>Reminders based on actual Mac activity.</p></div>
+          <div class="feature"><span>👀</span><h3>Posture & Eye Breaks</h3><p>Schedules for posture and eye health.</p></div>
+          <div class="feature"><span>💧</span><h3>Hydration Reminders</h3><p>Build better daily habits.</p></div>
+        </div>
+      </section>
+
+      <section id="screenshots">
+        <div class="section-title"><h2>See Posturio in action.</h2></div>
+        <div class="screenshots-grid">
+          <div class="screenshot-card"><img src="assets/3.png" onclick="openLightbox(this.src)"></div>
+          <div class="screenshot-card"><img src="assets/4.png" onclick="openLightbox(this.src)"></div>
+        </div>
+      </section>
+
+      <section id="wellness">
+        <div class="wellness">
+          <div>
+            <h2>Unlock Wellness Pack.</h2>
+            <p>Turn Posturio into a complete desk wellness companion with 41 illustrated exercises.</p>
+          </div>
+          <div class="price-card">
+            <div>Wellness Pack</div>
+            <div class="price">$5.99</div>
+            <a class="primary-button" href="https://apps.apple.com/us/app/posturio/id6775757325?mt=12">Get Posturio</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="privacy">
+        <div class="privacy">
+          <h2>Privacy first.</h2>
+          <p>Posturio works locally on your Mac. No accounts, no data selling.</p>
+        </div>
+      </section>
     </main>
+
+    <footer>© 2026 Posturio</footer>
   </div>
 
   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
