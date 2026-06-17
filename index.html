@@ -238,7 +238,7 @@ section { padding: 80px 0; }
   line-height: 1.55;
 }
 
-.screenshots-grid {
+/* .screenshots-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
@@ -268,7 +268,7 @@ section { padding: 80px 0; }
 
 .screenshot-card-content {
   padding: 18px 4px 4px;
-}
+} */
 
 .exercise-strip {
   display: grid;
@@ -277,7 +277,7 @@ section { padding: 80px 0; }
   margin-top: 32px;
 }
 
-.exercise-strip img {
+/* .exercise-strip img {
   width: 100%;
   background: white;
   border-radius: 22px;
@@ -285,7 +285,7 @@ section { padding: 80px 0; }
   padding: 12px;
   box-shadow: 0 16px 38px rgba(0,0,0,0.06);
   cursor: zoom-in;
-}
+} */
 
 .wellness {
   background: #111;
@@ -444,7 +444,7 @@ footer a { margin: 0 10px; }
 
 <main>
   <section class="hero">
-    <img src="assets/i256.png" alt="Posturio App Icon" class="hero-icon">
+   
 
     <div class="badge">✦ Native macOS menu-bar app</div>
 
@@ -528,25 +528,36 @@ footer a { margin: 0 10px; }
 
   </section>
 
-  <section id="wellness">
-    <div class="wellness">
-      <div>
-        <h2>Unlock Wellness Pack.</h2>
-        <p>
-          Turn Posturio into a complete desk wellness companion with movement,
-          hydration, stretch reminders, guided eye exercises, and 41 illustrated exercises.
-        </p>
+ <section id="wellness">
+  <div class="wellness">
+    <div>
+      <h2 style="margin-top: 0;">Unlock Wellness Pack.</h2>
+      <p style="color: rgba(255,255,255,0.72);">
+        Turn Posturio into a complete desk wellness companion with movement, 
+        hydration, stretch reminders, guided eye exercises, and 41 illustrated exercises.
+      </p>
 
-        <div class="check-list">
-          <div class="check">Stretch reminders</div>
-          <div class="check">Movement reminders</div>
-          <div class="check">Hydration reminders</div>
-          <div class="check">Guided eye exercises</div>
-          <div class="check">41 guided exercises for desk workers</div>
-        </div>
+      <div class="check-list">
+        <div class="check">Stretch reminders</div>
+        <div class="check">Movement reminders</div>
+        <div class="check">Hydration reminders</div>
+        <div class="check">Guided eye exercises</div>
+        <div class="check">41 guided exercises for desk workers</div>
       </div>
+    </div>
 
-  </section>
+    <div class="price-card">
+      <div style="font-weight: 600; color: var(--muted);">Wellness Pack</div>
+      <div class="price">$5.99</div>
+      <div style="font-size: 13px; color: var(--muted); margin-bottom: 20px;">Pay once • Use forever</div>
+      
+      <a class="primary-button" style="display: block; width: 100%; text-align: center;" 
+         href="https://apps.apple.com/us/app/posturio/id6775757325?mt=12">
+        Get Posturio
+      </a>
+    </div>
+  </div>
+</section>
 
   <section id="privacy">
     <div class="privacy">
