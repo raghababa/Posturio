@@ -157,36 +157,33 @@ h1 {
     .hero-image-styled { width: 100%; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.15); display: block; }
 
 
+ .video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: white;
+}
 
- 
+.video-container video {
+  width: 50%;
+  min-width: 420px;
+  max-width: 700px;
 
-/* /* .hero-card {
-  margin: 70px auto 0;
-  max-width: 940px;
-  background: rgba(255,255,255,0.75);
-  border: 1px solid var(--border);
-  border-radius: 32px;
-  box-shadow: var(--shadow);
-  padding: 18px;
-  backdrop-filter: blur(24px);
-} */
+  border-radius: 18px;
 
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.12);
 
-.hero-screenshot {
-  width: 100%;
   display: block;
-  border-radius: 24px;
-  border: 1px solid var(--border);
-} */
-  .hero-video {
-   margin: 70px auto 0;
-  max-width: 940px;
-  background: rgba(255,255,255,0.75);
-  border: 1px solid var(--border);
-  border-radius: 32px;
-  box-shadow: var(--shadow);
-  padding: 18px;
-  backdrop-filter: blur(24px);
+}
+ @media (max-width: 850px) {
+
+  .video-container video {
+    width: 100%;
+    min-width: 0;
+  }
+
 }
 
 section { padding: 80px 0; }
@@ -430,25 +427,20 @@ footer a { margin: 0 10px; }
       </a>
     </div>
 
-   <div class="hero-card">
-  <div class="mock-window">
-    <div class="window-top">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-    </div>
+ 
 
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-      class="hero-video"
-    >
-      <source src="assets/appstore.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <div class="video-container">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source src="assets/appstore.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
 </div>
 
