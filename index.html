@@ -170,6 +170,13 @@ h1 {
   padding: 18px;
   backdrop-filter: blur(24px);
 }
+ .hero-video {
+    display: block;
+    width: 100%;
+    height: auto;
+     object-fit: cover;
+    border-radius: 0 0 24px 24px;
+}
 
 .hero-screenshot {
   width: 100%;
@@ -419,9 +426,27 @@ footer a { margin: 0 10px; }
       </a>
     </div>
 
-   <div class="hero-image-container">
-          <img src="assets/2.png" alt="Posturio in action" class="hero-image-styled" onclick="openLightbox(this.src)">
-        </div>
+   <div class="hero-card">
+  <div class="mock-window">
+    <div class="window-top">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      class="hero-video"
+    >
+      <source src="assets/appstore.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
 
 
   <section id="features">
