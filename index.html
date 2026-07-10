@@ -127,6 +127,7 @@ h1 {
 
 .hero-actions {
   margin-top: 36px;
+  margin-bottom: 36px;
   display: flex;
   justify-content: center;
   gap: 14px;
@@ -156,13 +157,22 @@ h1 {
 .hero-image-container { padding: 40px 0; max-width: 1000px; margin: 0 auto; }
     .hero-image-styled { width: 100%; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.15); display: block; }
 
+ .hero-card {
+  margin: 60px auto 0;  
+  max-width: 900px;
 
- .video-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  background: white;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background: transparent;
 }
 
 .video-container video {
